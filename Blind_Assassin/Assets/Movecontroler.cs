@@ -10,6 +10,10 @@ public class Movecontroler : MonoBehaviour
     public float speed = 3.0F;
     public float jumpSpeed = 4.0F;
     public float gravity = 9.81F;
+
+    public int Action = 0;      //행동    0은 가만히 1은 왼막 2는 오른막 3은 웅크림
+    public int hp = 3;          //체력
+
     private Vector3 moveDirection = Vector3.zero;
     void Update()
     {
