@@ -46,15 +46,18 @@ public class arrow : MonoBehaviour
 
             transform.position -= direction * speed * Time.deltaTime;               //해당 방향으로 힘을줌
             
-            if ((transform.position - Target.position).magnitude < 5||GameObject.Find("Character").GetComponent<Movecontroler>().hp <=0)                //화살과 플레이어 간의 거리가 5이면
-            {   
+            if ((transform.position - Target.position).magnitude < 5|| Movecontroler.life <= 0)                //화살과 플레이어 간의 거리가 5이면
+            {
                 //////////////////////////// 히트 판정
-                if ((GameObject.Find("Character").GetComponent<Movecontroler>().Action) != dir)   //액션이 일치 하지 않는다면
-                    GameObject.Find("Character").GetComponent<Movecontroler>().hp--;                  //체력 감소
+                if (Movecontroler.action == dir+1)   //액션이 일치 하지 않는다면
+                    Destroy(gameObject);                //체력 감소
+                else
+                    Movecontroler.life--;
                 
+
                 Destroy(gameObject);                                                //제거
             }
         
-}
+        }
     }
 }

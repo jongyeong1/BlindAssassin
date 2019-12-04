@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Movecontroler : MonoBehaviour
 {
+    static public int life = 3;
+    public GameObject player;
+    static public int action = 0;
     [SerializeField]
     CharacterController cc;
 
