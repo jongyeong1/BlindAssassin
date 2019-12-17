@@ -6,6 +6,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Movecontroler : MonoBehaviour
 {
@@ -34,8 +35,8 @@ public class Movecontroler : MonoBehaviour
 
         }
         moveDirection.y -= gravity * Time.deltaTime;                           // y축에 대해 항상 중력값 부여
-        action = 0;                                                       // 기본값 설정
-        if (Input.GetKey(KeyCode.UpArrow))                                      // 숙일시
+        action = 0;                                                            // 기본값 설정
+        if (Input.GetKey(KeyCode.UpArrow))                                     // 숙일시
         {
             moveDirection = new Vector3(0, 0, 0);                              // 멈춤
             action = 1;                                                        // 통나무 회피 값으로 action 설정
@@ -49,7 +50,12 @@ public class Movecontroler : MonoBehaviour
             action = 3;                                                        // 오른쪽 막기 값으로 action 설정
         }
    
-        cc.Move(moveDirection * Time.deltaTime);                              // 캐릭터 움직임
+        cc.Move(moveDirection * Time.deltaTime);                               // 캐릭터 움직임
+
+        if(life<=0)
+        {
+            SceneManager.LoadScene("Start");
+        }
     }
 }
 

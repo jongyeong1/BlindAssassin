@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/play/Ending/ENDHP3.unity
     guid: aca016aca5c22a2409345cb78d52cbf6
+  - enabled: 1
+    path: Assets/play/Start.unity
+    guid: 808198aee80e7304eb72e34f051575c7
   m_configObjects: {}

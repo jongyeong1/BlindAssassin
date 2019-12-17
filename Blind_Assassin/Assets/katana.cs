@@ -13,22 +13,13 @@ public class katana : MonoBehaviour
 
     void Update()
     {
-
-
-
         if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.LeftArrow))  // 기본동작 외의 동작이 실행될시
         {
-
             righthands.GetComponent<Renderer>().enabled = false;                  // 랜더링 하이드 
-
-
         }
-        else 
+        else
         {
             righthands.GetComponent<Renderer>().enabled = true;                   // 랜더링 팝
         }
-
-
-
     }
 }
