@@ -30,13 +30,19 @@ public class swl : MonoBehaviour
             lhand2.GetComponent<Renderer>().enabled = true;     // 작업 2
             bb = true;                                          // 애니메이터 동작 수행 
         }
-        else
+        else 
         {
-            Movecontroler.action = 0;                           // 아닐시 기본자세 부여
-            lkata.GetComponent<Renderer>().enabled = false;     // 랜더링 하이드
-            lhand.GetComponent<Renderer>().enabled = false;
-            lhand2.GetComponent<Renderer>().enabled = false;    
-            bb = false;                                         // 애니메이터 동작 대기
+            if(Input.GetKey(KeyCode.RightArrow))
+            {
+
+            }
+            else 
+            { 
+               lkata.GetComponent<Renderer>().enabled = false;     // 랜더링 하이드
+               lhand.GetComponent<Renderer>().enabled = false;
+               lhand2.GetComponent<Renderer>().enabled = false;    
+               bb = false;       
+            }// 애니메이터 동작 대기
         }
 
         ani.SetBool("left", bb);                                // bb를 애니메이터 동작 조건 left로 지정

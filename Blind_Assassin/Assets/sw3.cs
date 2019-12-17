@@ -30,10 +30,17 @@ public class sw3 : MonoBehaviour
         }
         else
         {
-            Movecontroler.action = 0;                          // 아닐시 기본자세 부여
-            kata.GetComponent<Renderer>().enabled = false;     // 랜더링 하이드
-            hand.GetComponent<Renderer>().enabled = false;
-            bb = false;                                        // 애니메이터 동작 대기
+
+            if (Input.GetKey(KeyCode.LeftArrow))
+            {
+
+            }
+            else
+            {
+                kata.GetComponent<Renderer>().enabled = false;     // 랜더링 하이드
+                hand.GetComponent<Renderer>().enabled = false;
+                bb = false;                                        // 애니메이터 동작 대기
+            }
         }
 
         ani.SetBool("right", bb);                              // bb를 애니메이터 동작 조건 right로 지정
