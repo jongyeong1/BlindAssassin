@@ -58,7 +58,7 @@ public class trap : MonoBehaviour
     {
         Target = GameObject.Find("Player").transform;          //플레이어의 좌표 받기
 
-        if ((transform.position - Target.transform.position).magnitude <= 5)      //trap과 간격이 2 이하(거의 밟음) 즉 밟으면
+        if ((transform.position - Target.transform.position).magnitude <= 5)      //trap과 간격이 5 이하(거의 밟음) 즉 밟으면
         {
             key = true;
         }
