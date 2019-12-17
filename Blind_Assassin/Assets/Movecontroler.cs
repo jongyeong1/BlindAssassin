@@ -22,16 +22,16 @@ public class Movecontroler : MonoBehaviour
     {
         if (cc.isGrounded)
         {
-            moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+            moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, 30f);
             moveDirection = transform.TransformDirection(moveDirection);
-            moveDirection.z *= speed;
+            //moveDirection.z *= speed;
             if (Input.GetButton("Jump"))
                 moveDirection.y = jumpSpeed;
 
         }
         moveDirection.y -= gravity * Time.deltaTime;
 
-        moveDirection+=new Vector3(0, 0, 30f);
+       
    
 
         cc.Move(moveDirection * Time.deltaTime);
