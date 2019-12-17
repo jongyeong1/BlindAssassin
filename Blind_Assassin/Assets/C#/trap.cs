@@ -63,7 +63,7 @@ public class trap : MonoBehaviour
             key = true;
         }
 
-        if (GameObject.Find("Character").GetComponent<Movecontroler>().hp == 0)              //죽음
+        if (Movecontroler.life == 0)              //죽음
         {
             key = false;
         }
