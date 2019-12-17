@@ -33,6 +33,7 @@ public class trap : MonoBehaviour
         Cposition.y += 10.0f;
         Cposition.z += 40.0f;//통나무 생성 위치 조정 필요(캐릭터의 위치에서 좌표값을 추가시켜서 생성함)
         Trap = Instantiate(GameObject.FindWithTag("Log1"), Cposition, Quaternion.identity);//오브젝트를 생성하는 기능인 instantiate함수 실행
+        
     }
 
 
@@ -92,6 +93,5 @@ public class trap : MonoBehaviour
             }
 
         }
-
     }
 }

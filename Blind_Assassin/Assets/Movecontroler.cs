@@ -40,8 +40,6 @@ public class Movecontroler : MonoBehaviour
             moveDirection = new Vector3(0, 0, 0);                              // 멈춤
             action = 1;                                                        // 통나무 회피 값으로 action 설정
         }
-   
-
         cc.Move(moveDirection * Time.deltaTime);                              // 캐릭터 움직임
     }
 }

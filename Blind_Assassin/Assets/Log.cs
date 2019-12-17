@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Log : MonoBehaviour
 {
-
+    public float dodge = 0;
     float speed = 10.0f;
     Transform Target;
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class arrow : MonoBehaviour
 {
-    public float speed = 100.0f;                           //속도
+    public float speed = 30.0f;                           //속도
     public int dir = 0;                        //방향 1이면 플레이어 기준 왼쪽 2이면 오른쪽으로 판단
     Transform Target;                          //플레이어의 위치 저장
 
