@@ -22,17 +22,17 @@ public class swl : MonoBehaviour
     void Update()
     {
         leftshiled.GetComponent<Renderer>().enabled = false;    // 디폴트 - 랜더링 제거 (동작시 랜더링 팝)
-        if (Input.GetKey(KeyCode.LeftArrow))                    // 좌측손 동작시 
+        if (Movecontroler.action==2)                    // 좌측손 동작시 
         {
          
-            lkata.GetComponent<Renderer>().enabled = true;      // 동작수행전 랜더링 돌려주기 작업
+            lkata.GetComponent<Renderer>().enabled = false;      // 동작수행전 랜더링 돌려주기 작업
             //lhand.GetComponent<Renderer>().enabled = true;    // 부자연스러워서 제거 
             lhand2.GetComponent<Renderer>().enabled = true;     // 작업 2
             bb = true;                                          // 애니메이터 동작 수행 
         }
         else 
         {
-            if(Input.GetKey(KeyCode.RightArrow))
+            if(Movecontroler.action == 3)
             {
 
             }
@@ -46,8 +46,5 @@ public class swl : MonoBehaviour
         }
 
         ani.SetBool("left", bb);                                // bb를 애니메이터 동작 조건 left로 지정
-
-
-
     }
 }

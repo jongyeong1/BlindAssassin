@@ -20,20 +20,20 @@ public class sw3 : MonoBehaviour
 
     void Update()
     {
-
-        if (Input.GetKey(KeyCode.RightArrow))                  // 우측손 동작시 
+        if (Movecontroler.action==3)                  // 우측손 동작시 
         {
          
-            kata.GetComponent<Renderer>().enabled = true;      // 동작수행전 랜더링 돌려주기 작업
+            kata.GetComponent<Renderer>().enabled = false;      // 동작수행전 랜더링 돌려주기 작업
             hand.GetComponent<Renderer>().enabled = true;
+
             bb = true;                                         // 애니메이터 동작 수행 
         }
         else
         {
 
-            if (Input.GetKey(KeyCode.LeftArrow))
+            if (Movecontroler.action == 2)
             {
-
+                bb = false;
             }
             else
             {

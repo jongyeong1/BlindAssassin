@@ -1,49 +1,57 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/*
+ 2015041007 문승현
+ 생성된 통나무 의 충돌을 검사하는 기능 구현
+ */
+/*2016039036 장병권
+함정기능의 큰 틀인 trap에 맞춰서 코드 수정,최종 보완
+    */
 public class Log : MonoBehaviour
 {
-    public float dodge = 0;
+    public static float dodge = 1;
     float speed = 10.0f;
     Transform Target;
 
 
-    public float TimeLeft = 2.0f;               ///2016039036 장병권
+    public float TimeLeft = 2.0f;               
     public float nextTime = 0.0f;
     public GameObject trap;
-    private void Start()                       //2016039036 장병권 시간 초기화
+    public AudioSource Sound_effect1;
+
+
+    private void Start()                      
     {
-        nextTime = Time.time + TimeLeft;
+            nextTime = Time.time + TimeLeft;
+        if(transform.position.x>40)
+        {
+            Sound_effect1= GameObject.Find("Sound_log").GetComponent<AudioSource>();
+            Sound_effect1.Play();
+        }
     }
 
     private void Update()
     {
-        if (transform.position.z != -1000)                  //z값이 -1000이면 부동 2016039036 장병권
+        if (transform.position.z != -1000)                  
         {
             Target = GameObject.Find("Player").transform;
 
             Vector3 direction = (transform.position - Target.position).normalized;
             transform.position -= direction * speed * Time.deltaTime;
-
-
-            if (Time.time > nextTime)                                            //2초뒤 삭제 if문 내용 2016039036 장병권
-            {
-                GameObject.Find("Trap").GetComponent<trap>().Tree_Trap = false;     //제거 시 false로 바꿈
-                Destroy(gameObject);
-            }
         }
-
     }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.name == "Character")
         {
-            GameObject.Find("Trap").GetComponent<trap>().Tree_Trap = false;      //제거 시 false로 바꿈
-            Movecontroler.life--;                                      //피격 판정및 제거  2016039036 장병권
+            GameObject.Find("Trap").GetComponent<trap>().Tree_Trap = false;
+            if (dodge == 1)//통나무 회피는 dodge가 0일때 충돌해도 체력이 안깍임
+            {
+                Movecontroler.life--;
+            }
+            gameObject.SetActive(false);
             Destroy(gameObject);
-
         }
     }
 

@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 //장병권 2016039036
-
+//함정기능 전반에 대한 처리 
 //트랩을 밟는 순간 부터 랜덤으로 arrow 생성(통나무도 할 수 있으면 구현 하는게 좋을듯)
 public class trap : MonoBehaviour
 {
+    public float logtime=0.0f;
     public Vector3 pos;
     public bool key = false;            // Trap 작동      게임 종료나 맵 끝에 도착하면 false로 다시 바꾸어주면 된다.
 
@@ -27,12 +28,13 @@ public class trap : MonoBehaviour
     }
 
 
-    void Log_trap()//통나무를 생성하는 기능       //마지막 수정 2016039036 장병권 Destroy 함수가 밖에 있으면 Tree_Trap을 false로 바꾸기 어려움
+    void Log_trap()//통나무를 생성하는 기능       //마지막 수정 2015041007 문승현 통나무 충돌 여부 확을 위해서 수정
     {
         Vector3 Cposition = GameObject.Find("Character").transform.position;//캐릭터의 위치
         Cposition.y += 10.0f;
         Cposition.z += 40.0f;//통나무 생성 위치 조정 필요(캐릭터의 위치에서 좌표값을 추가시켜서 생성함)
         Trap = Instantiate(GameObject.FindWithTag("Log1"), Cposition, Quaternion.identity);//오브젝트를 생성하는 기능인 instantiate함수 실행
+        Log.dodge = 1;
         
     }
 
@@ -88,10 +90,27 @@ public class trap : MonoBehaviour
                 {
                     Log_trap();
                     Tree_Trap = true;
+                    Debug.Log(Tree_Trap);
                     //통나무 생성            ->통나무 안에서 처리를 
                 }
             }
-
+   
+        }
+        if (Tree_Trap == true)//통나무가 생성이 되어 있으면
+        {
+            logtime += Time.deltaTime;//시간을 계산하고
+            Debug.Log(logtime);
+            if(0.9f>logtime)//통나무 생성된지 1.0초 안에 양팔든 코드가 입력되면 회피실행
+            {
+                if(Movecontroler.action==1)
+                {
+                    Log.dodge = 0;
+                }
+            }
+            else if(logtime>0.9f)//시간 초과시 초기화
+            {
+                logtime = 0;
+            }
         }
     }
 }

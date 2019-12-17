@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class arrow : MonoBehaviour
 {
-    public float speed = 100.0f;                           //속도
+    public float speed = 10.0f;                           //속도
     public int dir = 0;                        //방향 1이면 플레이어 기준 왼쪽 2이면 오른쪽으로 판단
     Transform Target;                          //플레이어의 위치 저장
 
@@ -13,18 +13,25 @@ public class arrow : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (dir == 1)        //왼쪽일 경우
+        if (transform.position.y > -1000)//오브젝트 생성을 위해 화살 오브젝트를 하나 생성을 해놓는데 그 부분에서 활소리가 나서 예외처리
         {
-            Sound_effect1 = GameObject.Find("Bow_left").GetComponent<AudioSource>();
+            if (dir == 1)        //왼쪽일 경우
+            {
+                Sound_effect1 = GameObject.Find("Bow_left").GetComponent<AudioSource>();
+            }
+            else if (dir == 2)   //오른쪽일 경우
+            {
+                Sound_effect1 = GameObject.Find("Bow_right").GetComponent<AudioSource>();
+            }
+            else
+            {
+                Sound_effect1 = GameObject.Find("Bow_right").GetComponent<AudioSource>();
+            }
+            Sound_effect1.Play();                                                       //사운드 재생
+            Sound_effect2 = GameObject.Find("diffend").GetComponent<AudioSource>();     //막았을때
+            Sound_effect3 = GameObject.Find("hit").GetComponent<AudioSource>();         //맞았을때
+            dir++;
         }
-        else if (dir == 2)   //오른쪽일 경우
-        {
-            Sound_effect1 = GameObject.Find("Bow_right").GetComponent<AudioSource>();
-        }
-        Sound_effect1.Play();                                                       //사운드 재생
-        Sound_effect2 = GameObject.Find("diffend").GetComponent<AudioSource>();     //막았을때
-        Sound_effect3 = GameObject.Find("hit").GetComponent<AudioSource>();         //맞았을때
-        dir++;
     }
 
     // Update is called once per frame
