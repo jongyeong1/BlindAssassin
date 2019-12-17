@@ -24,7 +24,7 @@ public class swl : MonoBehaviour
         leftshiled.GetComponent<Renderer>().enabled = false;    // 디폴트 - 랜더링 제거 (동작시 랜더링 팝)
         if (Input.GetKey(KeyCode.LeftArrow))                    // 좌측손 동작시 
         {
-            Movecontroler.action = 2;                           // 캐릭터 컨트롤러 액션값 2 부여
+         
             lkata.GetComponent<Renderer>().enabled = true;      // 동작수행전 랜더링 돌려주기 작업
             //lhand.GetComponent<Renderer>().enabled = true;    // 부자연스러워서 제거 
             lhand2.GetComponent<Renderer>().enabled = true;     // 작업 2

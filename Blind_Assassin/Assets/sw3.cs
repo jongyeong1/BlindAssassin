@@ -23,7 +23,7 @@ public class sw3 : MonoBehaviour
 
         if (Input.GetKey(KeyCode.RightArrow))                  // 우측손 동작시 
         {
-            Movecontroler.action = 3;                          // 캐릭터 컨트롤러 액션값 3 부여
+         
             kata.GetComponent<Renderer>().enabled = true;      // 동작수행전 랜더링 돌려주기 작업
             hand.GetComponent<Renderer>().enabled = true;
             bb = true;                                         // 애니메이터 동작 수행 
