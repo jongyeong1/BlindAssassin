@@ -286,6 +286,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fab7e1862ebcb3842bf66c79e33a4641, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dodge: 0
+  TimeLeft: 2
+  nextTime: 0
+  trap: {fileID: 0}
 --- !u!1 &147932086
 GameObject:
   m_ObjectHideFlags: 0
@@ -702,7 +706,7 @@ BoxCollider:
   m_GameObject: {fileID: 279204307}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -781,9 +785,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e680c9a1595ad8245be464f3bcbf414c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
   speed: 300
-  call: 1
   dir: 0
   Sound_effect1: {fileID: 0}
   Sound_effect2: {fileID: 0}
@@ -938,7 +940,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a995e7eceb43ebd45ba2d8889cd9874c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 0
 --- !u!65 &314106302
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1359,7 +1360,6 @@ MonoBehaviour:
   kata: {fileID: 913992054}
   hand: {fileID: 1568087769}
   ss: {fileID: 9100000, guid: 6d626e60ceeafee4995783dbaa92e90f, type: 2}
-  a: 0
   ani: {fileID: 475158891}
 --- !u!95 &475158891 stripped
 Animator:
@@ -2203,7 +2203,6 @@ MonoBehaviour:
   lhand: {fileID: 180867076}
   lhand2: {fileID: 859097747}
   ss: {fileID: 9100000, guid: 6d626e60ceeafee4995783dbaa92e90f, type: 2}
-  a: 0
   ani: {fileID: 1123769285}
 --- !u!95 &1123769285 stripped
 Animator:
@@ -2973,7 +2972,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 958528903818e7147abc78ce256b4d80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hands: {fileID: 0}
 --- !u!114 &1831924931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3176,8 +3174,6 @@ MonoBehaviour:
   speed: 40
   jumpSpeed: 10
   gravity: 20
-  Action: 0
-  hp: 3
 --- !u!114 &1907104276
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3190,7 +3186,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a995e7eceb43ebd45ba2d8889cd9874c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 30
 --- !u!54 &1907104277
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3463,8 +3458,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1994904447}
-  m_LocalRotation: {x: 0.087172285, y: 0.89959055, z: 0.21045254, w: -0.37262255}
-  m_LocalPosition: {x: 6.337243, y: -3.2960696, z: 6.3372436}
+  m_LocalRotation: {x: 0.13631925, y: 0.20555153, z: 0.02892686, w: -0.96867377}
+  m_LocalPosition: {x: 10.043394, y: -6.618335, z: -170.28873}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
