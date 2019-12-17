@@ -22,18 +22,20 @@ public class trap : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        if (GameObject.Find("Character").transform.position.x >= 40f)           //final step
+            Level = 2;
     }
-    void Log_trap()//통나무를 생성하는 기능
+
+
+    void Log_trap()//통나무를 생성하는 기능       //마지막 수정 2016039036 장병권 Destroy 함수가 밖에 있으면 Tree_Trap을 false로 바꾸기 어려움
     {
         Vector3 Cposition = GameObject.Find("Character").transform.position;//캐릭터의 위치
-        GameObject Log;//통나무 오브젝트
-
         Cposition.y += 10.0f;
         Cposition.z += 40.0f;//통나무 생성 위치 조정 필요(캐릭터의 위치에서 좌표값을 추가시켜서 생성함)
-        Log = Instantiate(GameObject.FindWithTag("Log1"), Cposition, Quaternion.identity);//오브젝트를 생성하는 기능인 instantiate함수 실행
-        Destroy(Log, 2.0f);
+        Trap = Instantiate(GameObject.FindWithTag("Log1"), Cposition, Quaternion.identity);//오브젝트를 생성하는 기능인 instantiate함수 실행
     }
+
+
     void Arrow_Trap()       //호출시 Arrow 생성
     {
         dir = Random.Range(0, 2);     //방향 난수 생성 0이면 플레이어기준 왼쪽으로 1이면 오른쪽으로 생성
@@ -56,6 +58,7 @@ public class trap : MonoBehaviour
     void Update()
 
     {
+
         Target = GameObject.Find("Player").transform;          //플레이어의 좌표 받기
 
         if ((transform.position - Target.transform.position).magnitude <= 5)      //trap과 간격이 5 이하(거의 밟음) 즉 밟으면
@@ -75,29 +78,20 @@ public class trap : MonoBehaviour
             if (Time.time > nextTime)      //2초마다 한번 부름
             {
                 nextTime = Time.time + TimeLeft;
-                if (ran == 0)
+                if (ran == 0 && !Tree_Trap)
                 {
                     Arrow_Trap();
-                    Log_trap();
-                }
-                else
-                {
 
+                }
+                else if (!Tree_Trap)                   //ran ==1 && Tree_Trap = False
+                {
+                    Log_trap();
                     Tree_Trap = true;
                     //통나무 생성            ->통나무 안에서 처리를 
                 }
             }
 
         }
-        /*else if (Tree_Trap) 함정이 작동을 시작하고(함정작동 여부key값 검사) 그 후에 통나무 함정이 작동할지를 결정해야 될거같아서 주석처리 했습니다->if(key)가 실행될 경우 이 조건문은 실행되지 않습니다.
-        {
-            nextTime = Time.time + TimeLeft;
-        }*/
-        /*else    //player 정지시 (캐릭터는 정지하지 않게 프로젝트 진행된다고 가정하고 주석처리 했습니다)
-        {
-            nextTime = Time.time + TimeLeft;
-        }*/
-
 
     }
 }

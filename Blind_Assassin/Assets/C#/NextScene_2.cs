@@ -28,6 +28,7 @@ public class NextScene_2 : MonoBehaviour
 
         if ((transform.position - Target.transform.position).magnitude <= 40)      //trap과 간격이 2 이하(거의 밟음) 즉 밟으면
         {
+            GameObject.Find("Trap").GetComponent<trap>().key = false;                //2016039036 장병권 함정 중지
             key = true;
         }
 

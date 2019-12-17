@@ -4,15 +4,9 @@ using UnityEngine;
 
 public class arrow : MonoBehaviour
 {
-
-    public int damage = 1;                             //데미지
-
     public float speed = 100.0f;                           //속도
-    public bool call = true;                   //움직이려면 true로
-    float fOldTime = 0f;
     public int dir = 0;                        //방향 1이면 플레이어 기준 왼쪽 2이면 오른쪽으로 판단
-    Transform Target;      //플레이어의 위치 저장
-    float angle;
+    Transform Target;                          //플레이어의 위치 저장
 
     public AudioSource Sound_effect1, Sound_effect2,Sound_effect3;        //효과음 저장
 
@@ -31,9 +25,7 @@ public class arrow : MonoBehaviour
         Sound_effect3 = GameObject.Find("hit").GetComponent<AudioSource>();         //맞았을때
 
         }
-
-
-
+    
     // Update is called once per frame
     void Update()
     {
@@ -50,18 +42,16 @@ public class arrow : MonoBehaviour
             transform.position -= direction * speed * Time.deltaTime;               //해당 방향으로 힘을줌
 
             //////////////////////////// 히트 판정
-            ///
 
             if ((transform.position - Target.position).magnitude < 2.7f && (transform.position - Target.position).magnitude > 1.0f && Movecontroler.action != dir + 1)
-            {   //맞은 소리 추가할것
+            {   //맞은 소리
                 Sound_effect3.Play();
                 Movecontroler.life--;
                 Destroy(gameObject);
             }
 
             if ((transform.position - Target.position).magnitude < 1 || Movecontroler.life <= 0)                //화살과 플레이어 간의 거리가 5이면
-            {
-
+            {   //막은 소리
                 Sound_effect2.Play();
                 Destroy(gameObject);                                                //제거
             }
