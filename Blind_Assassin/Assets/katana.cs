@@ -23,11 +23,15 @@ public class katana : MonoBehaviour
 
 
         }
-        else
+        else if(Input.GetKey(KeyCode.UpArrow))
+        {
+            
+
+        }
+        else 
         {
             Movecontroler.action = 0;                                             // 액션값 돌려주지 않았을 떄를 대비
             righthands.GetComponent<Renderer>().enabled = true;                   // 랜더링 팝
-
         }
 
 
